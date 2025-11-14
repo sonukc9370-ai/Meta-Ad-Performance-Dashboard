@@ -25,17 +25,6 @@ The goal is to consolidate complex ad performance data into a single, interactiv
 
 ---
 
-## Data Source
-The dashboard utilizes a `[DESCRIBE YOUR DATASET - e.g., "a sample CSV dataset of Meta ad results," "a direct export from the Meta Ads Manager," or "a synthesized dataset for demonstration"]`.
-
-The dataset includes key dimensions such as:
-* Campaign Details (Name, ID)
-* Ad Set & Ad Type (Image, Video, Carousel, Stories)
-* Audience Demographics (Age, Gender, Country)
-* Performance Metrics (Impressions, Clicks, Conversions, Spend, etc.)
-* Time & Date
-
----
 
 ## ✨ Key Features & Visuals
 
@@ -73,11 +62,5 @@ To explore this dashboard:
 3.  Open the file in Power BI Desktop.
 4.  (Optional) If the dataset is included (`.csv` or `.xlsx`), you may need to update the data source path in Power Query.
 
-[You can also view an interactive, web-based version of this report here.]([IF YOU PUBLISHED TO POWER BI WEB, PASTE THE 'PUBLISH TO WEB' LINK HERE - if not, just delete this line])
 
----
 
-## 👤 Author
-* **[Your Name]**
-* [LinkedIn: (your-linkedin-url)]
-* [GitHub: (your-github-url)]
