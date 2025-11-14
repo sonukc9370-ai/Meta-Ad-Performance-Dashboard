@@ -1,7 +1,7 @@
 # 📊 Meta Ad Performance Dashboard (Power BI)
 
 [![Meta Ad Performance Dashboard](Images/image%20(2).png)]([[PUBLIC_POWER_BI_URL](https://app.powerbi.com/view?r=eyJrIjoiZjBlOGE0ZDYtZDA3Mi00YjVmLTljMTUtZjM5NmFmMjkxNGI4IiwidCI6IjA1ODJiNDQ5LTFhZWEtNGM1ZC05YTE0LTA5NGZlYmI4NGFmNiJ9)])
-
+[click here to open google](www.google.com)
 ## 🚀 Introduction
 
 This project is a comprehensive Power BI dashboard designed to analyze and visualize the performance of advertising campaigns on Meta platforms (Facebook and Instagram). The dashboard provides a high-level overview of key metrics and allows for deep-dive analysis into audience demographics, ad types, and campaign performance to drive data-driven marketing decisions.
