@@ -1,6 +1,6 @@
 # 📊 Meta Ad Performance Dashboard (Power BI)
 
-![Meta Ad Performance Dashboard Screenshot]([Images/images(1).png])
+![Meta Ad Performance Dashboard Screenshot]([Images/image(1).png])
 
 ## 🚀 Introduction
 
