@@ -1,6 +1,6 @@
 # 📊 Meta Ad Performance Dashboard (Power BI)
 
-[![Meta Ad Performance Dashboard]([Images/image%20(2).png)]([https://app.powerbi.com/view?r=eyJrIjoiZjBlOGE0ZDYtZDA3Mi00YjVmLTljMTUtZjM5NmFmMjkxNGI4IiwidCI6IjA1ODJiNDQ5LTFhZWEtNGM1ZC05YTE0LTA5NGZlYmI4NGFmNiJ9])
+[![Meta Ad Performance Dashboard](Images/image%20(2).png)]([[PUBLIC_POWER_BI_URL](https://app.powerbi.com/view?r=eyJrIjoiZjBlOGE0ZDYtZDA3Mi00YjVmLTljMTUtZjM5NmFmMjkxNGI4IiwidCI6IjA1ODJiNDQ5LTFhZWEtNGM1ZC05YTE0LTA5NGZlYmI4NGFmNiJ9)])
 
 ## 🚀 Introduction
 
