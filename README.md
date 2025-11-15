@@ -109,7 +109,7 @@ This dashboard is built with several key interactive features:
 
 ### 1. Interactive Filtering & Navigation
 * **Platform Toggle:** Seamlessly switch between **Facebook** and **Instagram** data.
-* **Dynamic Measure Selection:** A master slicer allows the user to change the entire report's context (e.g., from "Clicks" to "Engagement" or "Conversions"), which dynamically updates most charts.
+* **Dynamic Measure Selection:** A master slicer allows the user to change the entire report's context (e.g., from "Clicks" to "Engagement" or "Conversions" or "Shares"), which dynamically updates most charts.
 * **Filter Panel:** A dedicated side panel for drilling down by **Campaign Name** and **Target Interest**.
 
 ### 2. 📈 KPI Overview (KPI Cards)
