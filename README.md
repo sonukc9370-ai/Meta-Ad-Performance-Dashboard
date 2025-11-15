@@ -135,7 +135,7 @@ A top-level summary of the most critical metrics:
 To explore this dashboard:
 
 1.  Clone this repository.
-2.  Download the `.pbix` file.
+2.  **Download the Power BI Desktop file (`.pbix`) from the `PowerBI` folder here: [Meta Ad Performance Dashboard.pbix](https://github.com/yourusername/your-repo-name/blob/main/PowerBI/Meta%20Ad%20Performance%20Dashboard.pbix?raw=true)** (Replace `yourusername` and `your-repo-name` and adjust path as needed)
 3.  Open the file in Power BI Desktop.
 4.  (Optional) If the dataset is included (`.csv` or `.xlsx`), you may need to update the data source path in Power Query.
 
