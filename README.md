@@ -26,6 +26,60 @@ The goal is to consolidate complex ad performance data into a single, interactiv
 
 ---
 
+---
+
+## 🗂️ Data Model & Schema
+
+The data model consists of several tables, structured to support comprehensive analysis. The schema is designed in a star schema fashion, with one central fact table and multiple dimension tables.
+
+*(Your existing `![Data Modeling](Images/data_model.png)` image could also be moved here!)*
+
+### 1. `fact_performance` (Fact Table)
+This table contains all the quantitative performance metrics for each ad on a given day.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `Date` | Date of the ad performance record | Date |
+| `Ad_ID` | Foreign key linking to the `dim_ads` table | Text |
+| `Audience_ID`| Foreign key linking to the `dim_audience` table | Text |
+| `Impressions` | Number of times the ad was shown | Whole Number |
+| `Clicks` | Number of clicks on the ad | Whole Number |
+| `Purchases` | Number of purchases (conversions) | Whole Number |
+| `Shares` | Number of shares | Whole Number |
+| `Comments` | Number of comments | Whole Number |
+| `Budget` | Amount spent on that ad on that day | Decimal |
+
+### 2. `dim_ads` (Dimension Table)
+This table contains descriptive information about each ad.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `Ad_ID` | Primary key for the ad | Text |
+| `Ad_Type` | Type of ad (e.g., Carousel, Image, Video) | Text |
+| `Campaign_ID` | Foreign key linking to `dim_campaigns` | Text |
+| `Platform` | (e.g., Facebook, Instagram) | Text |
+
+### 3. `dim_audience` (Dimension Table)
+This table contains demographic information about the target audience.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `Audience_ID` | Primary key for the audience segment | Text |
+| `Gender` | (e.g., Male, Female, All) | Text |
+| `Age_Range` | (e.g., 18-24, 25-34) | Text |
+| `Country` | Country of the target audience | Text |
+| `Interest` | Target interest group | Text |
+
+### 4. `dim_campaigns` (Dimension Table)
+This table contains information about each marketing campaign.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `Campaign_ID` | Primary key for the campaign | Text |
+| `Campaign_Name` | The official name of the campaign | Text |
+
+---
+
 
 ## ✨ Key Features & Visuals
 
