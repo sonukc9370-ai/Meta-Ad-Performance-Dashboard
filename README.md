@@ -26,14 +26,76 @@ The goal is to consolidate complex ad performance data into a single, interactiv
 
 ---
 
+## 🗂️ Data Model & Schema
+
+The data model consists of several tables, structured to support comprehensive analysis. The schema is designed in a star schema fashion, with one central fact table (`ad_events`) and multiple dimension tables.
+
+
+
+### 1. `ad_events` (Fact Table)
+This table contains all the individual event records related to the ads.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `ad_id` | Foreign key linking to the `ads` table | Text/ID |
+| `Date` | Foreign key linking to the `Custom_Calendar` table | Date |
+| `day_of_week` | The day of the week the event occurred | Text |
+| `event_id` | Primary key for the event record | Text/ID |
+| `event_type` | Type of event (e.g., Click, Impression, Share) | Text |
+| `Hour` | The hour of the day the event occurred (0-23) | Whole Number |
+| `time_of_day` | A category for the time (e.g., Morning, Afternoon) | Text |
+
+### 2. `ads` (Dimension Table)
+This table contains descriptive information about each ad.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `ad_id` | Primary key for the ad | Text/ID |
+| `ad_platform` | Platform where the ad was shown (e.g., Facebook) | Text |
+| `ad_type` | Type of ad (e.g., Carousel, Image, Video) | Text |
+| `campaign_id` | Foreign key linking to `campaigns` | Text/ID |
+| `target_age_group`| The intended age demographic for the ad | Text |
+| `target_gender` | The intended gender demographic for the ad | Text |
+| `target_interests`| The intended interest group for the ad | Text |
+
+### 3. `users` (Dimension Table)
+This table contains demographic information about the users who interacted with the ads.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `age_group` | Age range of the user | Text |
+| `country` | Country of the user | Text |
+| `interests` | The user's interests | Text |
+| `location` | Specific location of the user | Text |
+| `user_age` | The specific age of the user | Whole Number |
+| `user_gender` | The gender of the user | Text |
+| `user_id` | Primary key for the user | Text/ID |
+
+### 4. `campaigns` (Dimension Table)
+This table contains information about each marketing campaign.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `campaign_id` | Primary key for the campaign | Text/ID |
+| `duration_days` | The total number of days the campaign ran | Whole Number |
+| `end_date` | The date the campaign ended | Date |
+| `name` | The official name of the campaign | Text |
+| `start_date` | The date the campaign started | Date |
+| `total_budget` | The total budget allocated to the campaign | Decimal Number |
+
+### 5. `Custom_Calendar` (Dimension Table)
+This is a standard date dimension table used for time-based analysis.
+
+| Column Name | Description | Data Type |
+| :--- | :--- | :--- |
+| `Date` | Primary key for the date | Date |
+| `Day` | Day of the month (1-31) | Whole Number |
+| `Day Name` | Name of the day (e.g., Monday) | Text |
+| `Month` | Month number (1-12) | WholeNumber |
+| `Month Name` | Name of the month (e.g., January) | Text |
+
 ---
 
-================================
-DATA MODEL & SCHEMA
-================================
-
----
-Here is the text, updated to match the data model from your screenshot:🗂️ Data Model & SchemaThe data model consists of several tables, structured to support comprehensive analysis. The schema is designed in a star schema fashion, with one central fact table (ad_events) and multiple dimension tables.1. ad_events (Fact Table)This table contains all the individual event records related to the ads.Column NameDescriptionData Typead_idForeign key linking to the ads tableText/IDDateForeign key linking to the Custom_Calendar tableDateday_of_weekThe day of the week the event occurredTextevent_idPrimary key for the event recordText/IDevent_typeType of event (e.g., Click, Impression, Share)TextHourThe hour of the day the event occurred (0-23)Whole Numbertime_of_dayA category for the time (e.g., Morning, Afternoon)Text2. ads (Dimension Table)This table contains descriptive information about each ad.Column NameDescriptionData Typead_idPrimary key for the adText/IDad_platformPlatform where the ad was shown (e.g., Facebook)Textad_typeType of ad (e.g., Carousel, Image, Video)Textcampaign_idForeign key linking to campaignsText/IDtarget_age_groupThe intended age demographic for the adTexttarget_genderThe intended gender demographic for the adTexttarget_interestsThe intended interest group for the adText3. users (Dimension Table)This table contains demographic information about the users who interacted with the ads.Column NameDescriptionData Typeage_groupAge range of the userTextcountryCountry of the userTextinterestsThe user's interestsTextlocationSpecific location of the userTextuser_ageThe specific age of the userWhole Numberuser_genderThe gender of the userTextuser_idPrimary key for the userText/ID4. campaigns (Dimension Table)This table contains information about each marketing campaign.Column NameDescriptionData Typecampaign_idPrimary key for the campaignText/IDduration_daysThe total number of days the campaign ranWhole Numberend_dateThe date the campaign endedDatenameThe official name of the campaignTextstart_dateThe date the campaign startedDatetotal_budgetThe total budget allocated to the campaignDecimal Number5. Custom_Calendar (Dimension Table)This is a standard date dimension table used for time-based analysis.Column NameDescriptionData TypeDatePrimary key for the dateDateDayDay of the month (1-31)Whole NumberDay NameName of the day (e.g., Monday)TextMonthMonth number (1-12)Whole NumberMonth NameName of the month (e.g., January)Text
 
 ## ✨ Key Features & Visuals
 
