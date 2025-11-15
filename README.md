@@ -28,57 +28,70 @@ The goal is to consolidate complex ad performance data into a single, interactiv
 
 ---
 
-## 🗂️ Data Model & Schema
-
-The data model consists of several tables, structured to support comprehensive analysis. The schema is designed in a star schema fashion, with one central fact table and multiple dimension tables.
-
-*(Your existing `![Data Modeling](Images/data_model.png)` image could also be moved here!)*
-
-### 1. `fact_performance` (Fact Table)
-This table contains all the quantitative performance metrics for each ad on a given day.
-
-| Column Name | Description | Data Type |
-| :--- | :--- | :--- |
-| `Date` | Date of the ad performance record | Date |
-| `Ad_ID` | Foreign key linking to the `dim_ads` table | Text |
-| `Audience_ID`| Foreign key linking to the `dim_audience` table | Text |
-| `Impressions` | Number of times the ad was shown | Whole Number |
-| `Clicks` | Number of clicks on the ad | Whole Number |
-| `Purchases` | Number of purchases (conversions) | Whole Number |
-| `Shares` | Number of shares | Whole Number |
-| `Comments` | Number of comments | Whole Number |
-| `Budget` | Amount spent on that ad on that day | Decimal |
-
-### 2. `dim_ads` (Dimension Table)
-This table contains descriptive information about each ad.
-
-| Column Name | Description | Data Type |
-| :--- | :--- | :--- |
-| `Ad_ID` | Primary key for the ad | Text |
-| `Ad_Type` | Type of ad (e.g., Carousel, Image, Video) | Text |
-| `Campaign_ID` | Foreign key linking to `dim_campaigns` | Text |
-| `Platform` | (e.g., Facebook, Instagram) | Text |
-
-### 3. `dim_audience` (Dimension Table)
-This table contains demographic information about the target audience.
-
-| Column Name | Description | Data Type |
-| :--- | :--- | :--- |
-| `Audience_ID` | Primary key for the audience segment | Text |
-| `Gender` | (e.g., Male, Female, All) | Text |
-| `Age_Range` | (e.g., 18-24, 25-34) | Text |
-| `Country` | Country of the target audience | Text |
-| `Interest` | Target interest group | Text |
-
-### 4. `dim_campaigns` (Dimension Table)
-This table contains information about each marketing campaign.
-
-| Column Name | Description | Data Type |
-| :--- | :--- | :--- |
-| `Campaign_ID` | Primary key for the campaign | Text |
-| `Campaign_Name` | The official name of the campaign | Text |
+================================
+DATA MODEL & SCHEMA
+================================
 
 ---
+[ FACT TABLE ]
+---
+(1) ad_events
+    - ad_id (FK -> ads.ad_id)
+    - Date (FK -> Custom_Calendar.Date)
+    - user_id (FK -> users.user_id)
+    - event_id (PK)
+    - event_type
+    - Hour
+    - day_of_week
+    - time_of_day
+
+---
+[ DIMENSION TABLES ]
+---
+(2) ads
+    - ad_id (PK)
+    - ad_platform
+    - ad_type
+    - campaign_id (FK -> campaigns.campaign_id)
+    - target_age_group
+    - target_gender
+    - target_interests
+
+(3) campaigns
+    - campaign_id (PK)
+    - name
+    - start_date
+    - end_date
+    - duration_days
+    - total_budget
+
+(4) users
+    - user_id (PK)
+    - age_group
+    - country
+    - interests
+    - location
+    - user_age
+    - user_gender
+
+(5) Custom_Calendar
+    - Date (PK)
+    - Day
+    - Day Name
+    - Month
+    - Month Name
+
+---
+[ SUPPORTING / UTILITY TABLES ]
+---
+(6) Measures
+    - [This is an empty container table used to store all DAX measures for better organization.]
+
+(7) Select dynamic Measure
+    - [This is a disconnected parameter table holding the list of measure names. 
+    - It is used to power the dynamic slicer, allowing users to change the 
+      entire report's context (e.g., from 'Clicks' to 'CTR').]
+
 
 
 ## ✨ Key Features & Visuals
