@@ -33,66 +33,7 @@ DATA MODEL & SCHEMA
 ================================
 
 ---
-[ FACT TABLE ]
----
-(1) ad_events
-    - ad_id (FK -> ads.ad_id)
-    - Date (FK -> Custom_Calendar.Date)
-    - user_id (FK -> users.user_id)
-    - event_id (PK)
-    - event_type
-    - Hour
-    - day_of_week
-    - time_of_day
-
----
-[ DIMENSION TABLES ]
----
-(2) ads
-    - ad_id (PK)
-    - ad_platform
-    - ad_type
-    - campaign_id (FK -> campaigns.campaign_id)
-    - target_age_group
-    - target_gender
-    - target_interests
-
-(3) campaigns
-    - campaign_id (PK)
-    - name
-    - start_date
-    - end_date
-    - duration_days
-    - total_budget
-
-(4) users
-    - user_id (PK)
-    - age_group
-    - country
-    - interests
-    - location
-    - user_age
-    - user_gender
-
-(5) Custom_Calendar
-    - Date (PK)
-    - Day
-    - Day Name
-    - Month
-    - Month Name
-
----
-[ SUPPORTING / UTILITY TABLES ]
----
-(6) Measures
-    - [This is an empty container table used to store all DAX measures for better organization.]
-
-(7) Select dynamic Measure
-    - [This is a disconnected parameter table holding the list of measure names. 
-    - It is used to power the dynamic slicer, allowing users to change the 
-      entire report's context (e.g., from 'Clicks' to 'CTR').]
-
-
+Here is the text, updated to match the data model from your screenshot:🗂️ Data Model & SchemaThe data model consists of several tables, structured to support comprehensive analysis. The schema is designed in a star schema fashion, with one central fact table (ad_events) and multiple dimension tables.1. ad_events (Fact Table)This table contains all the individual event records related to the ads.Column NameDescriptionData Typead_idForeign key linking to the ads tableText/IDDateForeign key linking to the Custom_Calendar tableDateday_of_weekThe day of the week the event occurredTextevent_idPrimary key for the event recordText/IDevent_typeType of event (e.g., Click, Impression, Share)TextHourThe hour of the day the event occurred (0-23)Whole Numbertime_of_dayA category for the time (e.g., Morning, Afternoon)Text2. ads (Dimension Table)This table contains descriptive information about each ad.Column NameDescriptionData Typead_idPrimary key for the adText/IDad_platformPlatform where the ad was shown (e.g., Facebook)Textad_typeType of ad (e.g., Carousel, Image, Video)Textcampaign_idForeign key linking to campaignsText/IDtarget_age_groupThe intended age demographic for the adTexttarget_genderThe intended gender demographic for the adTexttarget_interestsThe intended interest group for the adText3. users (Dimension Table)This table contains demographic information about the users who interacted with the ads.Column NameDescriptionData Typeage_groupAge range of the userTextcountryCountry of the userTextinterestsThe user's interestsTextlocationSpecific location of the userTextuser_ageThe specific age of the userWhole Numberuser_genderThe gender of the userTextuser_idPrimary key for the userText/ID4. campaigns (Dimension Table)This table contains information about each marketing campaign.Column NameDescriptionData Typecampaign_idPrimary key for the campaignText/IDduration_daysThe total number of days the campaign ranWhole Numberend_dateThe date the campaign endedDatenameThe official name of the campaignTextstart_dateThe date the campaign startedDatetotal_budgetThe total budget allocated to the campaignDecimal Number5. Custom_Calendar (Dimension Table)This is a standard date dimension table used for time-based analysis.Column NameDescriptionData TypeDatePrimary key for the dateDateDayDay of the month (1-31)Whole NumberDay NameName of the day (e.g., Monday)TextMonthMonth number (1-12)Whole NumberMonth NameName of the month (e.g., January)Text
 
 ## ✨ Key Features & Visuals
 
