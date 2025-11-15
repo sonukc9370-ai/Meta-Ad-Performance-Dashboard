@@ -1,7 +1,6 @@
 # 📊 Meta Ad Performance Dashboard (Power BI)
 
 [![Meta Ad Performance Dashboard](Images/image%20(2).png)](https://app.powerbi.com/view?r=eyJrIjoiZjBlOGE0ZDYtZDA3Mi00YjVmLTljMTUtZjM5NmFmMjkxNGI4IiwidCI6IjA1ODJiNDQ5LTFhZWEtNGM1ZC05YTE0LTA5NGZlYmI4NGFmNiJ9)
-![Data Modeling](Images/data_model.png)
 
 ## 🚀 Introduction
 
@@ -29,33 +28,36 @@ The goal is to consolidate complex ad performance data into a single, interactiv
 ## 🗂️ Data Model & Schema
 
 The data model consists of several tables, structured to support comprehensive analysis. The schema is designed in a star schema fashion, with one central fact table (`ad_events`) and multiple dimension tables.
-
+![Data Modeling](Images/data_model.png)
 
 
 ### 1. `ad_events` (Fact Table)
 This table contains all the individual event records related to the ads.
 
+
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
-| `ad_id` | Foreign key linking to the `ads` table | Text/ID |
-| `Date` | Foreign key linking to the `Custom_Calendar` table | Date |
+| `event_id` | Primary key for the event record | INT |
+| `ad_id` | Foreign key linking to the `ads` table |INT |
+| `user_id` | Foreign key linking to the `users` table |TEXT |
+| `timestamp` | Date And Time Combination | TIMESTAMP |
 | `day_of_week` | The day of the week the event occurred | Text |
-| `event_id` | Primary key for the event record | Text/ID |
-| `event_type` | Type of event (e.g., Click, Impression, Share) | Text |
+| `time_of_day` | A category for the time (e.g., Morning, Afternoon, Night) | Text |
+| `event_type` | Type of event (e.g., Click, Impression, Share, Comment) | Text |
+| `Date` | Foreign key linking to the `Custom_Calendar` table | Date |
 | `Hour` | The hour of the day the event occurred (0-23) | Whole Number |
-| `time_of_day` | A category for the time (e.g., Morning, Afternoon) | Text |
 
 ### 2. `ads` (Dimension Table)
 This table contains descriptive information about each ad.
 
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
-| `ad_id` | Primary key for the ad | Text/ID |
+| `ad_id` | Primary key for the ad | INT |
+| `campaign_id` | Foreign key linking to `campaigns` | Text/ID |
 | `ad_platform` | Platform where the ad was shown (e.g., Facebook) | Text |
 | `ad_type` | Type of ad (e.g., Carousel, Image, Video) | Text |
-| `campaign_id` | Foreign key linking to `campaigns` | Text/ID |
-| `target_age_group`| The intended age demographic for the ad | Text |
 | `target_gender` | The intended gender demographic for the ad | Text |
+| `target_age_group`| The intended age demographic for the ad | Text |
 | `target_interests`| The intended interest group for the ad | Text |
 
 ### 3. `users` (Dimension Table)
@@ -63,24 +65,24 @@ This table contains demographic information about the users who interacted with 
 
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
+| `user_id` | Primary key for the user | INT |
+| `user_gender` | The gender of the user | Text |
+| `user_age` | The specific age of the user | Whole Number |
 | `age_group` | Age range of the user | Text |
 | `country` | Country of the user | Text |
-| `interests` | The user's interests | Text |
 | `location` | Specific location of the user | Text |
-| `user_age` | The specific age of the user | Whole Number |
-| `user_gender` | The gender of the user | Text |
-| `user_id` | Primary key for the user | Text/ID |
+| `interests` | The user's interests | Text |
 
 ### 4. `campaigns` (Dimension Table)
 This table contains information about each marketing campaign.
 
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
-| `campaign_id` | Primary key for the campaign | Text/ID |
-| `duration_days` | The total number of days the campaign ran | Whole Number |
-| `end_date` | The date the campaign ended | Date |
+| `campaign_id` | Primary key for the campaign | INT |
 | `name` | The official name of the campaign | Text |
 | `start_date` | The date the campaign started | Date |
+| `end_date` | The date the campaign ended | Date |
+| `duration_days` | The total number of days the campaign ran | Whole Number |
 | `total_budget` | The total budget allocated to the campaign | Decimal Number |
 
 ### 5. `Custom_Calendar` (Dimension Table)
@@ -89,10 +91,15 @@ This is a standard date dimension table used for time-based analysis.
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
 | `Date` | Primary key for the date | Date |
-| `Day` | Day of the month (1-31) | Whole Number |
-| `Day Name` | Name of the day (e.g., Monday) | Text |
-| `Month` | Month number (1-12) | WholeNumber |
 | `Month Name` | Name of the month (e.g., January) | Text |
+| `Month` | Month number (1-12) | WholeNumber |
+| `Week Day` | Numeric day of the week (1 = Sun, 2 = Mon, ...) | INT |
+| `Week Num` | N Week number within the year | INT |
+| `Quarter` | Quarter of the year(1-4) | INT |
+| `Day Name` | Name of the day (e.g., Monday) | Text |
+| `Day` | Day of the month (1-31) | Whole Number |
+
+
 
 ---
 
