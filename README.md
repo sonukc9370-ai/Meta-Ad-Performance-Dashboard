@@ -12,8 +12,7 @@ This project is a comprehensive Power BI dashboard designed to analyze and visua
 The goal is to consolidate complex ad performance data into a single, interactive, and easy-to-understand report. This helps marketers and analysts to quickly:
 * Track key performance indicators (KPIs) in real-time.
 * Understand audience behavior and preferences.
-* Identify high-performing and
-    low-performing ads and campaigns.
+* Identify high and low performing ads and campaigns.
 * Optimize ad spend and improve return on investment (ROI).
 
 ---
@@ -37,23 +36,23 @@ This table contains all the individual event records related to the ads.
 
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
-| `event_id` | Primary key for the event record | INT |
-| `ad_id` | Foreign key linking to the `ads` table |INT |
-| `user_id` | Foreign key linking to the `users` table |TEXT |
-| `timestamp` | Date And Time Combination | TIMESTAMP |
+| `event_id` | Primary key for the event record | Int |
+| `ad_id` | Foreign key linking to the `ads` table | Int |
+| `user_id` | Foreign key linking to the `users` table |Text |
+| `timestamp` | Date And Time Combination | Timestamp|
 | `day_of_week` | The day of the week the event occurred | Text |
 | `time_of_day` | A category for the time (e.g., Morning, Afternoon, Night) | Text |
 | `event_type` | Type of event (e.g., Click, Impression, Share, Comment) | Text |
 | `Date` | Foreign key linking to the `Custom_Calendar` table | Date |
-| `Hour` | The hour of the day the event occurred (0-23) | Whole Number |
+| `Hour` | The hour of the day the event occurred (0-23) | Int |
 
 ### 2. `ads` (Dimension Table)
 This table contains descriptive information about each ad.
 
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
-| `ad_id` | Primary key for the ad | INT |
-| `campaign_id` | Foreign key linking to `campaigns` | Text/ID |
+| `ad_id` | Primary key for the ad | Int |
+| `campaign_id` | Foreign key linking to `campaigns` | Int |
 | `ad_platform` | Platform where the ad was shown (e.g., Facebook) | Text |
 | `ad_type` | Type of ad (e.g., Carousel, Image, Video) | Text |
 | `target_gender` | The intended gender demographic for the ad | Text |
@@ -65,9 +64,9 @@ This table contains demographic information about the users who interacted with 
 
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
-| `user_id` | Primary key for the user | INT |
+| `user_id` | Primary key for the user | Text |
 | `user_gender` | The gender of the user | Text |
-| `user_age` | The specific age of the user | Whole Number |
+| `user_age` | The specific age of the user | Int |
 | `age_group` | Age range of the user | Text |
 | `country` | Country of the user | Text |
 | `location` | Specific location of the user | Text |
@@ -78,12 +77,12 @@ This table contains information about each marketing campaign.
 
 | Column Name | Description | Data Type |
 | :--- | :--- | :--- |
-| `campaign_id` | Primary key for the campaign | INT |
+| `campaign_id` | Primary key for the campaign | Int |
 | `name` | The official name of the campaign | Text |
 | `start_date` | The date the campaign started | Date |
 | `end_date` | The date the campaign ended | Date |
-| `duration_days` | The total number of days the campaign ran | Whole Number |
-| `total_budget` | The total budget allocated to the campaign | Decimal Number |
+| `duration_days` | The total number of days the campaign ran | Int |
+| `total_budget` | The total budget allocated to the campaign | Decimal |
 
 ### 5. `Custom_Calendar` (Dimension Table)
 This is a standard date dimension table used for time-based analysis.
@@ -92,12 +91,12 @@ This is a standard date dimension table used for time-based analysis.
 | :--- | :--- | :--- |
 | `Date` | Primary key for the date | Date |
 | `Month Name` | Name of the month (e.g., January) | Text |
-| `Month` | Month number (1-12) | WholeNumber |
-| `Week Day` | Numeric day of the week (1 = Sun, 2 = Mon, ...) | INT |
-| `Week Num` | N Week number within the year | INT |
-| `Quarter` | Quarter of the year(1-4) | INT |
+| `Month` | Month number (1-12) | Int |
+| `Week Day` | Numeric day of the week (1 = Sun, 2 = Mon, ...) | Int |
+| `Week Num` | N Week number within the year | Int |
+| `Quarter` | Quarter of the year (1-4) | Int |
 | `Day Name` | Name of the day (e.g., Monday) | Text |
-| `Day` | Day of the month (1-31) | Whole Number |
+| `Day` | Day of the month (1-31) | Int |
 
 
 
